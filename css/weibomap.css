@@ -1,0 +1,123 @@
+#tooltip {
+    border: 1px solid #777;
+}
+
+#tooltip label {
+    font-style: italic;
+    font-size: 70%;
+    display: block;
+    float: left;
+    font-weight: bold;
+}
+
+.states {
+    fill:none;
+    stroke: #777;
+    stroke-width: 1px;
+    stroke-linejoin: round;
+}
+
+.active {
+    fill: orange;
+}
+
+
+path[occupy="0"]{ fill: #eff2fa; }
+path[occupy="1"]{ fill: #ccd6ee; }
+path[occupy="2"]{ fill: #b1c0e6; }
+path[occupy="3"]{ fill: #869dd9; }
+path[occupy="4"]{ fill: #4267c6; }
+path[occupy="5"]{ fill: #2a468d; }
+path[occupy="6"]{ fill: #1d3266; }
+path[occupy="7"]{ fill: #101b36; }
+
+path[selected="no"] {
+    stroke: #81c7d4;
+    opacity: .2;
+}
+
+path[selected="maybe"]{
+    stroke: #0089a7;
+}
+
+path[selected="yes"] {
+    stroke: #cb4042;
+}
+
+line[selected="no"] {
+    stroke: #81c7d4;
+    opacity: .2;
+}
+
+line[selected="maybe"]{
+    stroke: #0089a7;
+}
+
+line[selected="yes"] {
+    stroke: #cb4042;
+}
+
+#tree-container circle[selected="yes"]{
+    stroke: #e83015;
+    stroke-width: 1px;
+    fill: #e83015;
+}
+
+#tree-container circle[selected="no"]{
+    fill: white;
+    stroke: #006284; 
+    stroke-width: 1px;
+}
+
+
+/*
+path{
+    stroke: #33a6b8
+}
+
+path[id^="北京"]{
+    stroke: #cb4042
+}
+*/
+
+.place-label{
+    text-shadow: 0 0 4px rgb(255,255,255);
+}
+
+.line {
+  fill: none;
+  stroke: steelblue;
+  stroke-width: 1.5px;
+}
+
+.axis--x text {
+  font: 10px sans-serif;
+}
+
+.axis--y text {
+  font: 5px Georgia, serif;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+#map-container{
+    width: 960px;
+    margin: auto;
+}
+
+#chart-container{
+    width: 1125px;
+    margin: auto;
+    margin-top: 45px;
+    margin-bottom: 45px;
+}
+
+#tree-container{
+    width: 1200px;
+    margin: auto;
+}
