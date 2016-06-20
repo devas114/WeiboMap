@@ -10,70 +10,88 @@
         <script type="text/javascript" src="/js/papaparse.min.js" charset="utf-8"></script>
     </head>
     <body>
-        <nav class="navbar navbar-inverse">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="#">Weibo Map</a>
-                </div>
-                <div id="navbar" class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li class="active"><a href="#">Home</a></li>
-                        <li><a href="#about">How to use</a></li>
-                        <li><a href="#contact">Credentials</a></li>
-                        <li><a href="#me">About me</a></li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Action</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something else here</a></li>
-                                <li role="separator" class="divider"></li>
-                                <li class="dropdown-header">Nav header</li>
-                                <li><a href="#">Separated link</a></li>
-                                <li><a href="#">One more separated link</a></li>
-                            </ul>
-                        </li>
+        <div class="ct" id="t1">
+            <div class="ct" id="t2">
+                <div class="ct" id="t3">
+                    <nav class="navbar navbar-inverse">
+                        <div class="container">
+                            <div class="navbar-header">
+                                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                                    <span class="sr-only">Toggle navigation</span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </button>
+                                <a class="navbar-brand" href="#">Weibo Map</a>
+                            </div>
+                            <div id="navbar" class="navbar-collapse collapse">
+                                <ul class="nav navbar-nav">
+                                    <li class="active"><a href="#">Home</a></li>
+                                    <li><a id="how">How to use</a></li>
+                                    <li><a href="#contact">Credentials</a></li>
+                                    <li><a href="#me">About me</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>
+                    <div class="container theme-showcase fade-out" role="main" id="instruction">
+                        <div class="jumbotron">
+                            <h1>What is WeiboMap?</h1>
+                            <p>WeiboMap is a small and simple web application that aim to visualize the flows of information from weibo in both spatial and temporal perspectives.</p>
+                        </div>
+                        <div class="container col-lg-8 col-lg-offset-2" id="data-entry">
+                            <div class="alert alert-danger" role="alert" id="alert-no-file">
+                                No file chosen, please specify an input file
+                            </div>
+                            <div class="input-group input-group-lg">
+                                <input type="file" class="form-control" placeholder="Choose your CSV file" aria-describedby="sizing-addon1" id="choose">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-lg btn-primary" type="button" id="parse">Go!</button>
+                                </span>
+                            </div>
 
-                    </ul>
+                        </div>
+                    </div>
+                    <div class="left-nav" id="p0">
+                        <div class="left-item left-item-1" id="switch-map">
+                            <a href="#t1">Map View</a>
+                        </div>
+                        <div class="left-item left-item-1" id="switch-time">
+                            <a href="#t2">Time View</a>
+                        </div>
+                        <div class="left-item left-item-2" id="switch-tree">
+                            <a href="#t3">Tree View</a>
+                        </div>
+                        <div class="left-hover left-hover-1"><a href="#t1"></a></div>
+                        <div class="left-hover left-hover-2"><a href="#t2"></a></div>
+                        <div class="left-hover left-hover-3"><a href="#t3"></a></div>
+                        <div class="left-highlight">
+                            <div class="left-item">Map View</div>
+                            <div class="left-item">Time View</div>
+                            <div class="left-item">Tree View</div>
+                        </div>
+                    </div>
+                    <div class="showcase" id="p1">
+                        <div id="map-container"></div>
+                    </div>
+                    <div class="showcase" id="p2">
+                        <div id="chart-container"></div>
+                    </div>
+                    <div class="showcase" id="p3">
+                        <div id = "tree-container">
 <!--
-                    <ul class="nav navbar-nav navbar-right">
-                        <li><a id="btn-map">Map view</a></li>
-                        <li><a id="btn-tree">Tree view</a></li>
-                    </ul>
+                            <form id="view-switch">
+                                <input type="radio", id="dept-view", name="view" value="depth-first" checked> depth first
+                                <br>
+                                <input type="radio", id="bred-view", name="view", value="bredth-first"> breadth first
+                            </form>
 -->
+                            <h1>Comming Soon<h1>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </nav>
-        <div class="container theme-showcase" role="main" id="instruction">
-            <div class="jumbotron">
-                <h1>What is Weibo Map?</h1>
-                <p>Weibo Map is a small and simple web application that aim to visualize the flows of information from weibo in both spatially and temporally.</p>
-            </div>
-            <div class="container col-lg-8 col-lg-offset-2" id="data-entry">
-                <div class="input-group input-group-lg">
-                    <input type="file" class="form-control" placeholder="Choose your CSV file" aria-describedby="sizing-addon1" id="choose">
-                    <span class="input-group-btn">
-                        <button class="btn btn-lg btn-primary" type="button" id="parse">Go!</button>
-                    </span>
-                </div>
-
-            </div>
         </div>
-        <div id = "map-container" syele="display:none;"></div>
-        <div id = "tree-container" style="display: none;">
-            <form id="view-switch">
-                <input type="radio", id="dept-view", name="view" value="depth-first" checked> depth first
-                <br>
-                <input type="radio", id="bred-view", name="view", value="bredth-first"> breadth first
-            </form>
-        </div>
-        <div id = "chart-container"></div>
         <script type="text/javascript" src="js/d3.v3.min.js"></script>
         <script type="text/javascript" src="js/jquery.min.js"></script>
         <script type="text/javascript" src="js/bootstrap.min.js"></script>

@@ -1,3 +1,143 @@
+html,body, #t1, #t2, #t3{
+    width: 100%;
+    height: 100%
+}
+
+div#t3 > div.fade-out{
+    display: inline;
+    position: absolute;
+    width: 100%;
+    z-index: 2;
+    padding-top: 5%;
+    height: 100%;
+    transition: all .6s cubic-bezier(.5, .2, .2, 1.1);
+    -webkit-transition: all .6s cubic-bezier(.5, .2, .2, 1.1);
+    -moz-transition: all .6s cubic-bezier(.5, .2, .2, 1.1);
+    -o-transition: all .6s cubic-bezier(.5, .2, .2, 1.1);
+}
+
+.navbar{
+    z-index: 4;
+    width: 100%;
+    position: absolute;
+    margin-bottom: 0%;
+}
+
+.jumbotron{
+    width: 70%;
+    margin: auto;
+}
+
+#data-entry{
+    margin-top: 2%;
+}
+
+#alert-no-file{
+    display: none;
+}
+
+.dropdown-toggle{
+    cursor: pointer;
+}
+
+.navbar::after{
+    clear: none;
+}
+
+.left-nav{
+    position: absolute;
+    width: 15%;
+    height: 100%;
+    margin: 0;
+    padding-top: 80px;
+    transition: all .6s cubic-bezier(.5, .2, .2, 1.1);
+    color: #fff;
+    left:-20%;
+    z-index: 3;
+    background: whites;
+}
+
+.left-item{
+    position: relative;
+    height: 7rem;
+    font-size: 1.8rem;
+    line-height: 7rem;
+    padding-left: 7rem;
+    box-sizing: border-box;
+    top: 0;
+}
+
+#switch-map a,
+#switch-time a,
+#switch-tree a{
+    color: black;
+}
+
+.left-hover{
+    z-index: 4;
+    position: absolute;
+    left: 0;
+    top: 80px;
+    width: 80%;
+    height: 7rem;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+.left-hover a{
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.left-hover-2{
+    top: calc(80px + 7rem);
+}
+
+.left-hover-3{
+    top: calc(80px + 14rem);
+}
+
+.left-highlight{
+    z-index: 3;
+    position: absolute;
+    top: 80px;
+    left: 0;
+    width: 104%;
+    height: 7rem;
+    background: #39a5f7;
+    overflow: hidden;
+    box-shadow: 0 .3rem .2rem rgba(0, 0, 0, 0.3);
+    -webkit-transition: top .5s cubic-bezier(0.59, 0.04, 0.3, 1.43);
+    transition: top .5s cubic-bezier(0.59, 0.04, 0.3, 1.43);
+}
+
+.left-highlight .left-item{
+    -webkit-transition: top .5s cubic-bezier(0.59, 0.04, 0.3, 1.43);
+    transition: top .5s cubic-bezier(0.59, 0.04, 0.3, 1.43);
+}
+
+.showcase{
+    position: absolute;
+    width: 85%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    transition: all .6s cubic-bezier(.5, .2, .2, 1.1);
+    color: #fff;
+    overflow: hidden;
+    z-index: 2;
+}
+
+#p1, #p2, #p3{
+    left: 200%;
+}
+
+#p1{ background: cadetblue; }
+#p2{ background: gainsboro; }
+#p3{ background: beige; }
+
+
 #tooltip {
     border: 1px solid #777;
 }
@@ -17,8 +157,90 @@
     stroke-linejoin: round;
 }
 
-.active {
-    fill: orange;
+div#data-entry,
+div.jumbotron{
+    transform: scale(1);
+    transition:
+        opacity .6s linear,
+        transform .6s ease-in-out;
+}
+
+div#t3{
+    background: white;
+    transition: 
+        background .7s ease-in-out;
+}
+
+div.jumbotron h1,
+div.jumbotron p{
+    transition: 
+        opacity .7s linear,
+        text-shadow .7s ease-in-out,
+        color .7s ease-in-out;
+}
+
+#t1:target div#data-entry,
+#t2:target div#data-entry,
+#t3:target div#data-entry,
+#t1:target div.jumbotron,
+#t2:target div.jumbotron,
+#t3:target div.jumbotron{
+    transform: scale(0.8);
+    opacity: .7;
+}
+
+#t1:target div.jumbotron h1,
+#t2:target div.jumbotron h1,
+#t3:target div.jumbotron h1,
+#t1:target div.jumbotron p,
+#t2:target div.jumbotron p,
+#t3:target div.jumbotron p{
+    text-shadow: 0px 0px 10px rgba(51, 51, 51, 0.9);
+    color: rgba(51, 51, 51, 0);
+    opacity: .5;
+}
+
+#t1:target div.fade-out,
+#t2:target div.fade-out,
+#t2:target div.fade-out{
+    background: rgb(238,238,238);   
+}
+
+#t1:target #p0,
+#t2:target #p0,
+#t3:target #p0{
+    left: 0%;
+}
+
+#t1:target #p1,
+#t2:target #p2,
+#t3:target #p3{
+    left: 15%;
+}
+
+
+#t1:target .left-highlight{
+    top: 80px;
+}
+
+#t1:target .left-highlight .left-item{
+    top: 0;
+}
+
+#t2:target .left-highlight{
+    top: calc(80px + 7rem);
+}
+
+#t2:target .left-highlight .left-item{
+    top: -7rem;
+}
+
+#t3:target .left-highlight{
+    top: calc(80px + 14rem);
+}
+
+#t3:target .left-highlight .left-item{
+    top: -14rem;
 }
 
 
@@ -69,17 +291,6 @@ line[selected="yes"] {
     stroke-width: 1px;
 }
 
-
-/*
-path{
-    stroke: #33a6b8
-}
-
-path[id^="北京"]{
-    stroke: #cb4042
-}
-*/
-
 .place-label{
     text-shadow: 0 0 4px rgb(255,255,255);
 }
@@ -106,18 +317,20 @@ path[id^="北京"]{
 }
 
 #map-container{
-    width: 960px;
+    width: 90%;
     margin: auto;
+    margin-top: calc(50px + 5%);
+    background: white;
 }
 
 #chart-container{
-    width: 1125px;
+    width: 90%;
     margin: auto;
-    margin-top: 45px;
-    margin-bottom: 45px;
+    margin-top: calc(50px + 5%);
 }
 
 #tree-container{
-    width: 1200px;
+    width: 90%;
     margin: auto;
+    margin-top: calc(50px + 5%);
 }

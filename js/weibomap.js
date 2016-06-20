@@ -1,9 +1,3 @@
-/*var tooltip = d3.select("body").append("div")
-    .attr("id", "tooltip")
-    .style("display", "none")
-    .style("position", "absolute")
-    .html("<label><span id=\"tt_county\"></span></label>");
-*/
 var city_ref = {
     "安徽": "合肥",
     "河北": "石家庄",
@@ -39,14 +33,14 @@ var myData;
 var china_cities;
 var svg_map, svg_tree, temp, dataMap, treeData, mark_a, mark_b;
 var map_zoom = d3.behavior.zoom()
-    .scaleExtent([1,7])
+    .scaleExtent([0.8,5])
     .on("zoom", move_map);
 var tree_zoom = d3.behavior.zoom()
     .scaleExtent([0.1, 3])
     .on("zoom", move_tree);
-var rateById = d3.map();
 
-var width = 960, height = 600;
+var width = 0.765 * window.innerWidth,
+    height = 0.8 * window.innerHeight;
 var cities, provinces, circles, arclines, labels;
 
 var proj = d3.geo.mercator().center([105, 38]).scale(750).translate([width / 2, height / 2]);
@@ -60,7 +54,18 @@ d3.json("data/cities.json", function(error, json){
     if(error)return console.error(error);
     china_cities = json;
 });
-document.getElementById("parse").addEventListener("click",parseCSV);
+
+$("#parse").on("click", function(){
+    if(!$("#choose").val()){
+        $("#alert-no-file").css("display", "block");
+    }
+    else{
+        $("#alert-no-file").css("display", "none");
+        window.location="#t1";
+        parseCSV();
+    }
+})
+//document.getElementById("parse").addEventListener("click",parseCSV);
 //document.getElementById("btn-map").addEventListener("click",showMap);
 //document.getElementById("btn-tree").addEventListener("click",showTree);
 document.getElementById("dept-view").addEventListener("click",function(){
@@ -81,8 +86,8 @@ function showMap(){
         element_tree.parentNode.removeChild(element_tree);
     }catch(err){}
     document.getElementById("map-container").style.display="block";
-    if(mark_a && !mark_b){ 
-        pickData("map") 
+    if(mark_a && !mark_b){
+        pickData("map")
     };
 };
 
@@ -97,26 +102,7 @@ function showTree(){
 
 
 function Render(data){
-    var ul = document.createElement("ul");
-    var a_1 = document.createElement("a");
-    var a_2 = document.createElement("a");
-    var l_1 = document.createElement("li");
-    var l_2 = document.createElement("li");
-    var text_map = document.createTextNode("Map View");
-    var text_tree = document.createTextNode("Tree View");
-    ul.className = "nav navbar-nav navbar-right";
-    a_1.appendChild(text_map);
-    a_2.appendChild(text_tree);
-    l_1.appendChild(a_1);
-    l_2.appendChild(a_2);
-    l_1.id = "btn-map";
-    l_1.className = "active";
-    l_2.id = "btn-tree";
-    ul.appendChild(l_1);
-    ul.appendChild(l_2);
-    document.getElementById("navbar").appendChild(ul)
-    document.getElementById("btn-map").addEventListener("click",showMap);
-    document.getElementById("btn-tree").addEventListener("click",showTree);
+    //create map and its overlay
     svg_map = d3.select("#map-container").append("svg")
         .attr("width", width)
         .attr("height", height)
@@ -126,7 +112,8 @@ function Render(data){
         .append("g");
     map_feature = svg_map.append("g").attr("id","map-feature");
     map_overlay = svg_map.append("g").attr("id","map-overlay");
-    
+
+    //preprocess location data and calculate clusters
     var prov_nest = {};
     myData.forEach(function(item){
         if(item.user_location == undefined){item.user_location = "其他 其他";}
@@ -143,7 +130,7 @@ function Render(data){
                 if(match){item.city = city; item.prov = match.prov;}
                 else{console.log(item)}
             }
-            
+
         }else if(loc.length == 1){
             if(city_ref[loc[0]] != undefined){ city = city_ref[loc[0]];}else{city=loc[0];}
             try{
@@ -154,14 +141,15 @@ function Render(data){
                 console.log(item);
             }
         }else{ console.log("user_location error, Please check you data")};
-        
+
         if(prov_nest[item.prov]){
             prov_nest[item.prov].values += 1;}
         else{
             prov_nest[item.prov] = {key: item.prov, values: 1};
         }
     });
-    
+
+    //read map data and create svg map
     d3.json("data/china_provinces.json", function(err, states){
         if(err) throw err;
         map_feature.selectAll(".states")
@@ -194,19 +182,12 @@ function Render(data){
                 d3.select("#prov-" + name).attr("occupy",7)}
         })
     });
-    
-    
+
+
     createTree(data);
     createChart();
 }
 
-/*
-queue()
-    .defer(d3.json, "data/china_cities.json")
-    .defer(d3.json, "data/china_provinces.json")
-    .defer(d3.csv, "data/china_cities.csv", function(d) {rateById.set(d.id, +d.value);})
-    .await(makeMap);
-*/
 
 //generateChart(weibo);
 /*
@@ -239,7 +220,7 @@ function makeMap(error, counties, states) {
         .attr("d", path)
         .attr("class", "states")
 
-    
+
 
     labels = svg.selectAll(".place-label")
         .data(testdata)
@@ -263,17 +244,17 @@ function move_map(){
     var s = d3.event.scale;
     zscale=s;
     var h = height / 4;
-    
+
     t[0] = Math.min(
         (width / height) * (s - 1),
         Math.max(width * (1-s), t[0])
     );
-    
+
     t[1] = Math.min(
         h * (s - 1) + h * s,
         Math.max(height * (1 - s) - h * s, t[1])
     );
-    
+
     map_zoom.translate(t);
     svg_map.attr("transform", "translate(" + t + ")scale(" + s + ")");
     circles.attr("r", 5 / s);
@@ -296,13 +277,13 @@ function createCurve(line_mark){
     var cname2 = line_mark.key.split("-")[1];
     var pt1 = {name:cname1, coordinate: [china_cities[cname1].logi, china_cities[cname1].latt]};
     var pt2 = {name:cname2, coordinate: [china_cities[cname2].logi, china_cities[cname2].latt]};
-    
+
     var line_width;
     if(line_mark.values<=5){ line_width = 2;}
     else if(line_mark.values>5 && line_mark.values<=10){line_width = 4;}
     else if(line_mark.values>10 && line_mark.values<=20){line_width = 6;}
     else if(line_mark.values>20){line_width = 8;}
-    
+
     var B1 = function(x){
         return 1 - 2 * x + x * x;
     };
@@ -400,14 +381,14 @@ function createCurve(line_mark){
     var line = d3.svg.line()
         .x(function(d){ return proj([d.latt,d.logi])[0]})
         .y(function(d){ return proj([d.latt,d.logi])[1]});
-    
+
     for(i=1;i<curveCoordinates.length;i++){
         l_collection.push([
             {"latt":curveCoordinates[i-1][0],"logi":curveCoordinates[i-1][1]},
             {"latt":curveCoordinates[i][0],"logi":curveCoordinates[i][1]}
         ])
     }
-    
+
     map_overlay.selectAll("#arc")
         .data(l_collection)
         .enter()
@@ -431,11 +412,9 @@ function createTree(myData){
         }else{
             treeData.push(node);
         };
-        //var time_by_hour = node.date + "-" + node.time.slice(0,2)
-        //node.time_by_hour = time_by_hour
         var timestemp = parseInt(node.t)*1000;
         if (!timestemp){
-            alert("invalid time format")}
+            alert("invavlid time format")}
         else{
             var date = new Date(timestemp);
             var cdate = new Date(timestemp + date.getTimezoneOffset()*60000 + 8*60*60000);
@@ -494,7 +473,7 @@ function growTree(source){
             d3.select(this).select("#circle-marker").remove();
         })
         .on("click", function(d){
-            if(mark_b){ 
+            if(mark_b){
                 mark_a=""; mark_b=""
             }
             var leaf_node = d3.select(this);
@@ -526,7 +505,7 @@ function growTree(source){
         .text(function(d){ return d.screen_name; })
         .style("fill-opacity", 0.8)
         .attr("visibility", "hidden");
-    
+
     if(mark_a && !mark_b){
         if(document.getElementById("dept-view").checked == true){
             traceBack(mark_a, "no");
@@ -605,33 +584,38 @@ function searchOut(node, n_switch){
     };
 }
 
-function createChart(){ 
+//create time chart
+function createChart(){
     var nested = d3.nest()
         .key(function(d){return d.time;})
         .rollup(function(leaves){return leaves.length;})
         .entries(myData);
-    
+
+    //a dictionary of time that easy to fetch a specific time
     var time_dic={};
-    
+
     var chart_container = d3.select("#chart-container").append("svg")
         .attr("id", "chart-container-svg")
-        .attr("width", 1125)
-        .attr("height", 140);
+        .attr("width", width)
+        .attr("height", height);
     var rect_x;
-//    nested.forEach(function(d){if(d.values==1){console.log(d)}});
     var parseHour = d3.time.format("%Y-%m-%d-%H-%M").parse;
-    
+
+    //change time format
     nested.forEach(function(node){
         node.key= parseHour(node.key);
     })
     nested.forEach(function(node){
         time_dic[node.key] = node;
     })
+
+    //data that acturally rendered in the time chart
     var chart_time = [];
     var time_extent = d3.extent(nested, function(d){return d.key;})
     chart_time.push(nested[0]);
-    for(i=1;i<nested.length-1;i++){
-        var conbo = false;
+
+    //insert additional data in order to prevent render error
+    for(i=1; i<nested.length-1; i++){
         var this_time = nested[i].key;
         var prev_time = new Date(this_time.getTime() - 60000);
         var next_time = new Date(this_time.getTime() + 60000);
@@ -642,11 +626,11 @@ function createChart(){
         if(!time_dic[next_time]){
             chart_time.push({key:next_time, values:0});
             time_dic[next_time] = {key:next_time, values:0};};
-        
+
     }
-    
-    var scale_x = d3.time.scale().range([0,1125-60]).domain(d3.extent(chart_time, function(d){return d.key;})),
-        scale_y = d3.scale.linear().range([140-20,0]).domain([0,d3.max(chart_time, function(d){return d.values})]);
+
+    var scale_x = d3.time.scale().range([0,width-60]).domain(d3.extent(chart_time, function(d){return d.key;})),
+        scale_y = d3.scale.linear().range([height-30,0]).domain([0,d3.max(chart_time, function(d){return d.values})]);
 
     var xAxis = d3.svg.axis().scale(scale_x).orient("bottom").ticks(10),
         yAxis = d3.svg.axis().scale(scale_y).orient("left").ticks(10);
@@ -654,41 +638,35 @@ function createChart(){
         .x(function(d){return scale_x(d.key)})
         .y(function(d){return scale_y(d.values)});
 
-    chart_container.append("g")
-        .attr("class","x axis")
-        .attr("transform", "translate(60,120)")
-        .call(xAxis)
-
-    chart_container.append("g")
-        .attr("class","y axis")
-        .attr("transform", "translate(55,0)")
-        .call(yAxis)
-/*
-        .append("text")
-        .attr("transform", "rotate(-90)")
-        .attr("y", 6)
-        .attr("dy", ".71em")
-        .style("text-anchor", "end")
-        .text("frequency");
-*/
     chart_container.append("path")
         .datum(chart_time)
         .attr("class", "line")
         .attr("d", chartLine)
-        .attr("transform", "translate(60,0)")
+        .attr("transform", "translate(60,10)")
         .attr("fill", "none");
-    
+
+    chart_container.append("g")
+        .attr("class","x axis")
+        .attr("transform", "translate(60," + (height-20) + ")")
+        .call(xAxis)
+
+    chart_container.append("g")
+        .attr("class","y axis")
+        .attr("transform", "translate(55,10)")
+        .call(yAxis)
+
+    //create additional layer to enable data selection
     var overlay = chart_container.append("g")
         .append("rect")
         .attr("x", "0")
-        .attr("y", "0")
+        .attr("y", "10")
         .attr("wdith", "0")
-        .attr("height", "120");
+        .attr("height", height-30);
     var line_cursor = chart_container.append("line")
         .attr("x1", "0")
-        .attr("y1", "0")
+        .attr("y1", "10")
         .attr("x2", "0")
-        .attr("y2", "120")
+        .attr("y2", height-20)
         .style({display: "none"})
         .style({stroke: "black", "stroke-width": "2px", opacity: "0.5"})
 
@@ -701,13 +679,13 @@ function createChart(){
         .on("mousedown", function(){
             var x0 = d3.mouse(this)[0];
             overlay.attr("width", "0")
-                .attr("fill", "steelblue")
+                .attr("fill", "darkorange")
                 .attr("opacity", "0.3")
                 .style({display: null});
             if(x0>=60){
                 rect_x = x0;
                 mark_a = "";
-                mark_b = "";      
+                mark_b = "";
             }else{if(!rect_x){rect_x = 60;}}
         })
         .on("mousemove", function(){
@@ -736,7 +714,6 @@ function createChart(){
         })
         .on("mouseup", function(){
             rect_x = "";
-            clearMap();
             pickData("map");
         })
 
@@ -756,10 +733,10 @@ function parseCSV(weibo){
         comments: false,
         step: undefined,
         complete: function(results,file){
-            document.getElementById("data-entry").style.display="none";
-            document.getElementById("instruction").style.display="none";
             console.log("Results: ", results);
             myData=results.data;
+            clearRender("map-container");
+            clearRender("chart-container");
             Render(myData);
         },
         error: undefined,
@@ -774,11 +751,11 @@ function parseCSV(weibo){
 }
 
 function pickData(kw){
-    clearMap();
+    clearRender("map-overlay");
     var target_id;
     var render_set=[];
     if(mark_b){
-        for(i=0;i<myData.length;i++){
+        for(i=0; i<myData.length; i++){
             var date = new Date(parseInt(myData[i].t)*1000);
             var node_time = new Date(parseInt(myData[i].t)*1000 + date.getTimezoneOffset()*60000 + 8*60*60000);
             if(node_time>mark_a && node_time<mark_b){ render_set.push(myData[i]);}
@@ -792,7 +769,7 @@ function pickData(kw){
             searchLoad(target_id);
         }
     }
-    
+
     function trackLoad(mid){
         var this_id = mid;
         var next_id = dataMap[this_id].parent.mid;
@@ -801,7 +778,7 @@ function pickData(kw){
             trackLoad(next_id);
         }else{}
     }
-    
+
     function searchLoad(mid){
         var children = dataMap[mid].children;
         render_set.push(dataMap[mid]);
@@ -812,7 +789,7 @@ function pickData(kw){
         };
     }
     console.log(render_set);
-    
+
     if(kw=="map"){
         drawData(render_set);
     }else if(kw=="tree"){
@@ -845,9 +822,9 @@ function drawData(render_set){
             .key(function(d){return d;})
             .rollup(function(leaves){return leaves.length;})
             .entries(render_links);
-        
+
 //        console.log(nest_link);
-        
+
         nest_link.forEach(function(d){
             var source = d.key.split("-")[0];
             if(source in render_nodes){}
@@ -868,7 +845,7 @@ function drawData(render_set){
                 else if(d.values>10 && d.values<=20){return "#a40000";}
                 else if(d.values>20){return "#690000";}
             })
-/*            
+/*
             .attr("r", function(d){
                 if(d.values<=5){return "4px";}
                 else if(d.values>10 && d.values<=20){return "6px";}
@@ -887,7 +864,7 @@ function drawData(render_set){
                 d3.selectAll("[id^=\""+ d.key + "\"]").attr("selected", "maybe");
                 d3.selectAll("[id$=\""+ d.key + "\"]").attr("selected", "yes");
             })
-            .on("mouseout", function(d){ 
+            .on("mouseout", function(d){
                 var marker = "#place-label-" + d.key;
                 map_overlay.select(marker).attr("visibility", "hidden");
                 d3.selectAll(".arcs").attr("selected", "maybe");
@@ -924,7 +901,7 @@ function drawData(render_set){
             .attr("text-anchor", "start")
             .text(function(d){return d.key+":"+d.values;})
             .attr("visibility", "hidden");
-        
+
     }
 }
 // mark tree elements when chart is selected
@@ -942,17 +919,25 @@ function markData(render_set){
     }
     else{console.log("no element selected")}
 }
-
+/*
 function clearMap(){
     var trash = document.getElementById("map-overlay");
     while(trash.firstChild){
         trash.removeChild(trash.firstChild);
     }
 }
-
+*/
 function clearTree(){
     svg_tree.selectAll("line").attr("selected", "maybe");
     svg_tree.selectAll("circle").attr("selected", "no");
     svg_tree.selectAll("text").attr("visibility", "hidden");
 }
 
+function clearRender(entry){
+    if(typeof(entry) === "string"){
+        var trash = document.getElementById(entry);
+        while(trash.firstChild){
+            trash.removeChild(trash.firstChild);
+        }
+    }
+}
