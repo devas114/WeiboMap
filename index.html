@@ -1,0 +1,126 @@
+<!DOCTYPE HTML>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <mete name="author" content="Nan Li">
+    <meta name="keywords" content="Weibo, visualization, map, interactive">
+    <title>WeiboCanvas</title>
+    <script src="https://use.fontawesome.com/7bf87dc21b.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="./dist/stylesheet/main.bundle.css">
+</head>
+<body>
+    <nav id="nav">
+        <ul>
+            <li>
+                <a class="nav-button nav-home" href="/index.html">Home</a>
+            </li>
+            <li>
+                <a class="nav-button nav-" href="/instruction.html">Instruction</a>
+            </li>
+            <li>
+                <a class="nav-button" href="#">Credentials</a>
+            </li>
+            <li>
+                <a class="nav-button" href="http://devasnanli.com" target="_blank">About me</a>
+            </li>
+        </ul>
+    </nav>
+    <div class="main">
+        <div class="overlay">
+            <div class="spinner">
+                <i class="fa fa-circle-o-notch fast-spin fa-3x fa-fw"></i>
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+        <div class="intro">
+            <div class="jumbo">
+                <h1>What is WeiboMap?</h1>
+                <p>WeiboMap is a light-weight visualization widget for <a href="http://vis.pku.edu.cn/weibova/weiboevents/">WeiboEvents</a>. Simply choose the .csv file that obtained from WeiboEvents and have a try.</p>
+                <p>Just want a quick look? You could also obtain some example files from <a href="https://1drv.ms/f/s!AghULKJ_2Xpobd5X-8Dq_mNjFSk">here</a>.</p>
+            </div>
+            <div class="file-input">
+                <div class="file-icon">
+                    <i class="fa fa-upload fa-6"></i>
+                </div>
+                <input type="file" name="entry-file" id="entry-file">
+                <label for="entry-file" class="file-label">
+                        <span>Choose a file</span>
+                </label>
+            </div>
+        </div>
+        <div class="sidebar">
+            <ul>
+                <li class="side-nav side-map active" to="map">
+                    <a class="side-button">
+                        <i class="fa fa-map fa-2" aria-hidden="true"></i>
+                        Map
+                    </a>
+                </li>
+                <li class="side-nav side-time" to="time">
+                    <a class="side-button">
+                        <i class="fa fa-area-chart fa-2" aria-hidden="true"></i>
+                        Time
+                    </a>
+                </li>
+                <li class="side-nav side-tree" to="tree">
+                    <a class="side-button">
+                        <i class="fa fa-share-alt fa-2" aria-hidden="true"></i>
+                        Tree
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="content">
+            <div class="content-box content-map" id="map">
+            </div>
+            <div class="content-box content-time" id="time">
+            </div>
+            <div class="content-box content-tree" id="tree">
+                <h2>Comming soom...</h2>
+            </div>
+        </div>
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="info">
+                    <p>Designed and coded by <a href="http://devasnanli.com" target="_black">Nate Li</a>.</p>
+                </div>
+                <div class="contact">
+                    <ul class="footer-list">
+                        <li class="footer-item">
+                            <a href="https://github.com/devas114" target="_blank">
+                                <i class="fa fa-github-alt fa-3"></i>
+                            </a>
+                        </li>
+                        <li class="footer-item">
+                            <a href="https://www.linkedin.com/in/nan-li-95309baa" target="_blank">
+                                <i class="fa fa-linkedin fa-3"></i>
+                            </a>
+                        </li>
+                        <li class="footer-item">
+                            <a href="https://www.facebook.com/profile.php?id=100004689849739" target="_blank">
+                                <i class="fa fa-facebook fa-3"></i>
+                            </a>
+                        </li>
+                        <li class="footer-item">
+                            <a href="https://twitter.com/devas114" target="_blank">
+                                <i class="fa fa-twitter fa-3"></i>
+                            </a>
+                        </li>
+                        <li class="footer-item">
+                            <a href="http://weibo.com/p/1005051055818127/" target="_blank">
+                                <i class="fa fa-weibo fa-2"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/TweenLite.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/plugins/CSSPlugin.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/TimelineLite.min.js"></script>
+    <script type="text/javascript" src="./dist/javascript/main.bundle.js"></script>
+    <script type="text/javascript" src="./main.bundle.js"></script>
+</body>

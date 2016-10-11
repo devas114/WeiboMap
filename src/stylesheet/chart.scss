@@ -1,0 +1,22 @@
+@import "media_query";
+
+.line {
+  fill: none;
+  stroke: $theme-blue;
+  stroke-width: 1.5px;
+}
+
+.axis--x text {
+  font: 10px sans-serif;
+}
+
+.axis--y text {
+  font: 5px Georgia, serif;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}

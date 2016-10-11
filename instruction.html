@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <mete name="author" content="Nan Li">
+    <meta name="keywords" content="Weibo, visualization, map, interactive">
+    <title>Introduction to WeiboCanvas</title>
+    <script src="https://use.fontawesome.com/7bf87dc21b.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="./dist/stylesheet/intro.bundle.css">
+</head>
+<body>
+    <nav id="nav">
+        <ul>
+            <li>
+                <a class="nav-button nav-home" href="/index.html">Home</a>
+            </li>
+            <li>
+                <a class="nav-button nav-" href="/instruction.html">Instruction</a>
+            </li>
+            <li>
+                <a class="nav-button" href="#">Credentials</a>
+            </li>
+            <li>
+                <a class="nav-button" href="http://devasnanli.com" target="_blank">About me</a>
+            </li>
+        </ul>
+    </nav>
+    <div class="main">
+        <section class="section-intro">
+            <h1>Introduction</h1>
+            <p><a href="http://www.weibo.com/" target="_blank">Weibo</a> is a famous online social platform in China. In the past, it was considered as a Chinese counter part of Twitter. However, as Twitter is losing its battle against other online social platforms, Weibo is growing drastically and has become the largest social media platform in China.</p>
+            <p>Similar to Twitter, Weibo users can publish posts with a limitation of 140 Chinese characters. However, different from the retweet mechanism in Twitter, Weibo users can repost a Weibo post with their own comments and share it with their own followers.</p>
+            <p>There are plenty of tools to create visualizations of Weibo posts, <a href="http://vis.pku.edu.cn/weibova/weiboevents/" target="_blank">WeiboEvents</a> is probably the most famous one. It provides rich functionalities for users to explore the data. But it does not put enough attention on the spatial pattern of the information diffusion.</p>
+            <p>WeiboMap is created to close this gap. As a widget for WeiboEvents, it take the repost information that gathered by WeiboEvents and visualize the information diffusion in the perspectives of space, time, and structure.</p>
+        </section>
+        <section class="section-data">
+            <h3>1. Prepare your data</h3>
+            <p>First of all, we need to get the Weibo data that we want to explore. Simply go to the WeiboEvents site and paste the URL of the Weibo post that interests us and click the <strong>"start"</strong> button. WeiboEvents will start to analyze the URL and gather data of every repost and its publisher.</p>
+            <p>After the gathering process is finished, the result is rendered. Click the <strong>"save"</strong> button on the right side of the top panel.</p>
+            <p>Go back the the front page of WeiboEvents, and navigate to the <strong>"Sharing"</strong> button on the navigation bar and click the <strong>"My contents"</strong> button. The data that you saved in previous steps would be available to be downloaded in the page that are opened.</p>
+            <p>Download and open the .csv file with your preferred editor (Microsoft Excel or Numbers). Use the <strong>"find and replace"</strong> function that provided by the editor to replace every double quote symbol (") with two double quotes (""). Once you are done, save the results to a new .csv file.</p>
+        </section>
+        <section class="section-load">
+            <h3>2. Upload your data</h3>
+            <p>When you have your .csv file ready. Click the <strong>"Choose a file"</strong> button on WeiboMap and navigate yourself to the .csv file that you created in previous steps and click <strong>"OK"</strong>. </p>
+            <p>Click the <strong>"Upload"</strong> button and you are good to go. The parsing process may take a few seconds depending on the size of the .csv file. </p>
+        </section>
+        <section class="section-act">
+            <h3>3. Visualize and interact</h3>
+            <p>Once the WeiboMap finished parsing the file, a map and time chart should pop up. You can navigate yourself between these graphs using the panel on your left side.</p>
+            <p>This widget presumes that every Weibo user lives in the cities that shows in their account profiles. Users’ locations are categorized as "Other" if they live outside of China or don't have location information in their profiles. These users are represented by the rectangle area in the north of the rendered map.</p>
+            <p>Colorings of on the map represents the proportions of users that located in each provinces. Provinces with higher proportion are marked by darker color.</p>
+            <p>The time chart represents the frequency of reposts in every minute from the publication time of the Weibo post to the data collection time. You can make a selection by clicking and dragging on the chart. All reposts that published between the selected time period will be drawn on the map. The dots represent the cities and links represent the information diffusion between them. You can also hover your mouse on them to see detailed descriptions. To cancel a selection, simply click any where on the time chart.</p>
+        </section>
+        <section class="section-dev">
+            <h3>In development</h3>
+            <p>The visualization in the structure perspective is still in development. This graph will represent the cascade structure of the information diffusion of the Weibo post. Selections on this graph should also be represented on the map and the time chart.</p>
+        </section>
+    </div>
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="info">
+                <p>Designed and coded by <a href="http://devasnanli.com" target="_black">Nate Li</a>.</p>
+            </div>
+            <div class="contact">
+                <ul class="footer-list">
+                    <li class="footer-item">
+                        <a href="https://github.com/devas114" target="_blank">
+                            <i class="fa fa-github-alt fa-3"></i>
+                        </a>
+                    </li>
+                    <li class="footer-item">
+                        <a href="https://www.linkedin.com/in/nan-li-95309baa" target="_blank">
+                            <i class="fa fa-linkedin fa-3"></i>
+                        </a>
+                    </li>
+                    <li class="footer-item">
+                        <a href="https://www.facebook.com/profile.php?id=100004689849739" target="_blank">
+                            <i class="fa fa-facebook fa-3"></i>
+                        </a>
+                    </li>
+                    <li class="footer-item">
+                        <a href="https://twitter.com/devas114" target="_blank">
+                            <i class="fa fa-twitter fa-3"></i>
+                        </a>
+                    </li>
+                    <li class="footer-item">
+                        <a href="http://weibo.com/p/1005051055818127/" target="_blank">
+                            <i class="fa fa-weibo fa-2"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+    <script type="text/javascript" src="./intro.bundle.js"></script>
+</body>

@@ -1,0 +1,102 @@
+@import "media_query";
+
+.footer {
+    width: 100%;
+    background-color: $theme-black;
+    margin-top: 80px;
+    height: auto;
+
+    .footer-content {
+        width: 60%;
+        margin-left: auto;
+        margin-right: auto;
+        padding-top: 15px;
+        padding-bottom: 15px;
+
+        .info {
+            color: rgb(255, 255, 255);
+            text-align: center;
+            display: block;
+
+            p {
+                font-weight: 400;
+                font-size: 16px;
+                margin-top: 10px;
+                margin-bottom: 5px;
+            }
+
+            a {
+                text-decoration: none;
+                font-size: 20px;
+                cursor: pointer;
+                font-weight: 700;
+                color: $theme-blue;
+
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+
+            @include large-desktop {
+                float: left;
+                text-align: left;
+                margin-bottom: 10px;
+            }
+        }
+
+        .contact {
+            text-align: center;
+            display: block;
+
+            &:after {
+                display: table;
+                content: "";
+                clear: right;
+            }
+
+            @include large-desktop {
+                float: right;
+                text-align: left;
+            };
+        }
+
+        &:after {
+            display: table;
+            content: "";
+            clear: right;
+        }
+    }
+}
+
+.footer-list {
+    text-align: center;
+    padding-left: 0;
+    margin: 0;
+
+    .footer-item {
+        display: inline-block;
+        margin: 1px 1px;
+
+        a {
+            width: 40px;
+            height: 40px;
+            position: relative;
+            display: inline-block;
+            transition: all 0.3s ease-out;
+            color: $theme-blue;
+            text-decoration: none;
+            background-color: transparent;
+            border-radius: 50%;
+            cursor: pointer;
+
+            &:hover {
+                background-color: rgba(255, 255, 255, 0.1);
+            }
+
+            .fa {
+                line-height: 40px;
+                font-size: 20px;
+            }
+        }
+    }
+}

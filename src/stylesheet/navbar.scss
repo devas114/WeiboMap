@@ -1,0 +1,43 @@
+@import "media_query";
+#nav {
+    height: auto;
+    width: 100%;
+    float: left;
+    display: block;
+    left: 0;
+    top: 0;
+    position: fixed;
+    z-index: 100;
+
+    ul {
+        text-align: center;
+        height: auto;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        background-color: $theme-blue;
+
+        li {
+            height: auto;
+            width: auto;
+            font-size: 1rem;
+            font-height: 1.2rem;
+            clear: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+
+            &:hover {
+                background-color: $theme-blue-light;
+            }
+
+            a {
+                border: none;
+                text-decoration: none;
+                padding: 1.2rem;
+                color: white;
+                cursor: pointer;
+                display: block;
+            }
+        }
+    }
+}

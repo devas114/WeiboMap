@@ -1,0 +1,170 @@
+html {
+  font-family: "Open Sans",sans-serif;
+  box-sizing: border-box; }
+
+*, *::after, *::before {
+  box-sizing: inherit; }
+
+body {
+  position: relative;
+  top: 0;
+  left: 0; }
+
+body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, form, fieldset, legend, button, input, textarea, th, td {
+  margin: 0;
+  padding: 0; }
+
+h1, h2, h3, h4, h5, h6 {
+  font-size: 100%; }
+
+ul, ol {
+  list-style: none; }
+
+a {
+  text-decoration: none; }
+
+#nav {
+  height: auto;
+  width: 100%;
+  float: left;
+  display: block;
+  left: 0;
+  top: 0;
+  position: fixed;
+  z-index: 100; }
+  #nav ul {
+    text-align: center;
+    height: auto;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: #3b5998; }
+    #nav ul li {
+      height: auto;
+      width: auto;
+      font-size: 1rem;
+      font-height: 1.2rem;
+      clear: none;
+      display: inline-block;
+      transition: all 0.3s ease; }
+      #nav ul li:hover {
+        background-color: #9fb1ca; }
+      #nav ul li a {
+        border: none;
+        text-decoration: none;
+        padding: 1.2rem;
+        color: white;
+        cursor: pointer;
+        display: block; }
+
+.footer {
+  width: 100%;
+  background-color: #272727;
+  margin-top: 80px;
+  height: auto; }
+  .footer .footer-content {
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 15px;
+    padding-bottom: 15px; }
+    .footer .footer-content .info {
+      color: white;
+      text-align: center;
+      display: block; }
+      .footer .footer-content .info p {
+        font-weight: 400;
+        font-size: 16px;
+        margin-top: 10px;
+        margin-bottom: 5px; }
+      .footer .footer-content .info a {
+        text-decoration: none;
+        font-size: 20px;
+        cursor: pointer;
+        font-weight: 700;
+        color: #3b5998; }
+        .footer .footer-content .info a:hover {
+          text-decoration: underline; }
+      @media (min-width: 1024px) {
+        .footer .footer-content .info {
+          float: left;
+          text-align: left;
+          margin-bottom: 10px; } }
+    .footer .footer-content .contact {
+      text-align: center;
+      display: block; }
+      .footer .footer-content .contact:after {
+        display: table;
+        content: "";
+        clear: right; }
+      @media (min-width: 1024px) {
+        .footer .footer-content .contact {
+          float: right;
+          text-align: left; } }
+    .footer .footer-content:after {
+      display: table;
+      content: "";
+      clear: right; }
+
+.footer-list {
+  text-align: center;
+  padding-left: 0;
+  margin: 0; }
+  .footer-list .footer-item {
+    display: inline-block;
+    margin: 1px 1px; }
+    .footer-list .footer-item a {
+      width: 40px;
+      height: 40px;
+      position: relative;
+      display: inline-block;
+      transition: all 0.3s ease-out;
+      color: #3b5998;
+      text-decoration: none;
+      background-color: transparent;
+      border-radius: 50%;
+      cursor: pointer; }
+      .footer-list .footer-item a:hover {
+        background-color: rgba(255, 255, 255, 0.1); }
+      .footer-list .footer-item a .fa {
+        line-height: 40px;
+        font-size: 20px; }
+
+body {
+  background-color: #f2f2f2; }
+
+.main {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 80px;
+  margin-bottom: 40px;
+  padding: 20px 60px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  background-color: white;
+  color: #272727; }
+  @media (min-width: 1024px) {
+    .main {
+      width: 60%; } }
+  .main p {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    font-size: 16px;
+    line-height: 2rem; }
+  .main h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-top: 30px;
+    margin-bottom: 30px; }
+  .main h3 {
+    font-size: 1.5rem; }
+  .main a {
+    font-weight: 700; }
+    .main a:hover {
+      text-decoration: underline; }
+  .main strong {
+    font-weight: 700; }
+  .main section {
+    margin-bottom: 10px; }
+    .main section:last-child {
+      margin-bottom: 0; }

@@ -1,0 +1,92 @@
+@import "media_query";
+
+.sidebar {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 180px;
+    background-color: $theme-grey-light;
+    height:100vh;
+    padding-top: 70px;
+    z-index: 60;
+    transform: translateX(-200px);
+
+    ul {
+        list-style: none;
+        padding-left: 0;
+    }
+
+    .side-nav {
+        text-align: center;
+        position: relative;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        transition: background-color 0.3s ease;
+        margin-bottom: 10px;
+        overflow: hidden;
+
+        &:hover {
+            background-color: $theme-grey;
+            box-shadow: $material-shadow-1;
+        }
+
+        .side-button {
+            text-decoration: none;
+            display: block;
+            font-size: 1.5rem;
+            color: $theme-black;
+            z-index: 70;
+            position: relative;
+
+            .fa {
+                margin-right: 5px;
+            }
+        }
+    }
+
+}
+
+.sidebar.active {
+    transition: transform 0.3s ease;
+
+    @include large-desktop {
+        transform: translateX(0px);
+    };
+}
+
+.side-nav.active {
+    background-color: $theme-blue;
+    transition: background-color 0.3s ease 0.4s;
+
+    .side-button {
+        color: rgb(255, 255, 255);
+        transition: color 0.3s ease 0.2s;
+    }
+
+    &:hover {
+        background-color: $theme-blue;
+    }
+}
+
+.ripple {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 65;
+
+    span {
+        transform: scale(0);
+        border-radius: 100%;
+        position: absolute;
+        background-color: $theme-blue;
+        animation: ripple 850ms;
+    }
+}
+
+@keyframes ripple {
+    to {
+        transform: scale(2);
+    }
+}

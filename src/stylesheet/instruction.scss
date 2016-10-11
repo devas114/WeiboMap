@@ -1,0 +1,63 @@
+@import "media_query";
+@import "base";
+@import "navbar";
+@import "footer";
+
+body {
+    background-color: $theme-grey-light;
+}
+
+
+.main {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 80px;
+    margin-bottom: 40px;
+    padding: 20px 60px;
+    box-shadow: $material-shadow-2;
+    background-color: rgb(255, 255, 255);
+    color: $theme-black;
+
+    @include large-desktop {
+        width: 60%;
+    }
+
+    p {
+        margin-top: 30px;
+        margin-bottom: 30px;
+        font-size: 16px;
+        line-height: 2rem;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+
+    h3 {
+        font-size: 1.5rem;
+    }
+
+    a {
+        font-weight: 700;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    strong {
+        font-weight: 700;
+    }
+
+    section {
+        margin-bottom: 10px;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+}
