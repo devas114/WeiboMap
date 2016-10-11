@@ -701,7 +701,7 @@ function buildTree() {}
 
 //app starts!!
 $(".file-icon").click(function(){
-    var fileName = $("entry-file").val();
+    var fileName = $("#entry-file").val();
 
     if(!fileName){
         animation.Jump();
@@ -714,7 +714,6 @@ $(".file-icon").click(function(){
             animation.In();
             setTimeout(parseCSV, 300);
             setTimeout(animation.Out, 2000);
-            console.log(weiboData);
         }
     }
 });
