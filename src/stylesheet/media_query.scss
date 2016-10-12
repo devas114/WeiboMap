@@ -1,3 +1,4 @@
+$extra-width: 1440px;
 $desktop-width: 1024px;
 $tablet-width: 768px;
 $mobile-width: 580px;
@@ -21,7 +22,13 @@ $mobile-width: 580px;
 }
 
 @mixin large-desktop {
-    @media (min-width: #{$desktop-width}) {
+    @media (min-width: #{$desktop-width}) and (max-width: #{$extra-width - 1px}){
+        @content;
+    }
+}
+
+@mixin giant-desktop {
+    @media (min-width: #{$extra-width}) {
         @content;
     }
 }

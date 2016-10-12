@@ -23,6 +23,10 @@ body {
         width: 60%;
     }
 
+    @include giant-desktop {
+        width: 60%;
+    }
+
     p {
         margin-top: 30px;
         margin-bottom: 30px;

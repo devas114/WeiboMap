@@ -3,7 +3,7 @@
 .footer {
     width: 100%;
     background-color: $theme-black;
-    margin-top: 80px;
+    margin-top: 30px;
     height: auto;
 
     .footer-content {
@@ -42,6 +42,12 @@
                 text-align: left;
                 margin-bottom: 10px;
             }
+
+            @include giant-desktop {
+                float: left;
+                text-align: left;
+                margin-bottom: 10px;
+            }
         }
 
         .contact {
@@ -57,7 +63,12 @@
             @include large-desktop {
                 float: right;
                 text-align: left;
-            };
+            }
+
+            @include giant-desktop {
+                float: right;
+                text-align: left;
+            }
         }
 
         &:after {

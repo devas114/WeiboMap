@@ -123,7 +123,7 @@ a {
 
 .sidebar.active {
   transition: transform 0.3s ease; }
-  @media (min-width: 1024px) {
+  @media (min-width: 1024px) and (max-width: 1439px) {
     .sidebar.active {
       transform: translateX(0px); } }
 
@@ -264,7 +264,7 @@ a {
 .footer {
   width: 100%;
   background-color: #272727;
-  margin-top: 80px;
+  margin-top: 30px;
   height: auto; }
   .footer .footer-content {
     width: 60%;
@@ -289,7 +289,12 @@ a {
         color: #3b5998; }
         .footer .footer-content .info a:hover {
           text-decoration: underline; }
-      @media (min-width: 1024px) {
+      @media (min-width: 1024px) and (max-width: 1439px) {
+        .footer .footer-content .info {
+          float: left;
+          text-align: left;
+          margin-bottom: 10px; } }
+      @media (min-width: 1440px) {
         .footer .footer-content .info {
           float: left;
           text-align: left;
@@ -301,7 +306,11 @@ a {
         display: table;
         content: "";
         clear: right; }
-      @media (min-width: 1024px) {
+      @media (min-width: 1024px) and (max-width: 1439px) {
+        .footer .footer-content .contact {
+          float: right;
+          text-align: left; } }
+      @media (min-width: 1440px) {
         .footer .footer-content .contact {
           float: right;
           text-align: left; } }
@@ -338,7 +347,7 @@ a {
   position: relative;
   padding-top: 15vh;
   width: 100%;
-  height: auto;
+  height: 100%;
   z-index: 30;
   display: block; }
   .intro .jumbo {
@@ -349,7 +358,10 @@ a {
     background-color: #ced1d8;
     border-radius: 10px;
     color: #272727; }
-    @media (min-width: 1024px) {
+    @media (min-width: 1440px) {
+      .intro .jumbo {
+        width: 900px; } }
+    @media (min-width: 1024px) and (max-width: 1439px) {
       .intro .jumbo {
         width: 900px; } }
     @media (min-width: 768px) and (max-width: 1023px) {
@@ -371,9 +383,17 @@ a {
       font-weight: 400;
       margin-top: 1rem;
       margin-bottom: 1rem; }
+  @media (min-width: 1440px) {
+    .intro {
+      padding-top: 20vh;
+      padding-bottom: 15vh; } }
+  .intro:after {
+    content: "";
+    display: table;
+    clear: both; }
 
 .file-input {
-  margin-top: 30px;
+  margin-top: 10vh;
   text-align: center; }
   .file-input #entry-file {
     width: 0.1px;
@@ -430,7 +450,12 @@ a {
   padding: 10px 10px;
   overflow: hidden;
   display: none; }
-  @media (min-width: 1024px) {
+  @media (min-width: 1024px) and (max-width: 1439px) {
+    .content {
+      margin-left: 200px;
+      width: calc(100vw - 200px);
+      margin-right: 0; } }
+  @media (min-width: 1440px) {
     .content {
       margin-left: 200px;
       width: calc(100vw - 200px);
