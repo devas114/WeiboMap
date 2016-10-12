@@ -46,6 +46,7 @@ a {
       font-height: 1.2rem;
       clear: none;
       display: inline-block;
+      -webkit-transition: all 0.3s ease;
       transition: all 0.3s ease; }
       #nav ul li:hover {
         background-color: #9fb1ca; }
@@ -65,8 +66,10 @@ a {
   float: left;
   opacity: 0;
   background-color: white;
+  -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
-  transform: scale(5, 5); }
+  -webkit-transform: scale(5, 5);
+          transform: scale(5, 5); }
   .overlay .spinner {
     height: 100px;
     width: 100px;
@@ -79,13 +82,16 @@ a {
       margin-left: 20px; }
 
 .overlay.active {
+  -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
   opacity: 0.9;
-  transform: scale(1, 1);
+  -webkit-transform: scale(1, 1);
+          transform: scale(1, 1);
   z-index: 50; }
 
 .fast-spin {
-  animation: fa-spin 0.8s infinite linear; }
+  -webkit-animation: fa-spin 0.8s infinite linear;
+          animation: fa-spin 0.8s infinite linear; }
 
 .sidebar {
   position: fixed;
@@ -96,7 +102,8 @@ a {
   height: 100vh;
   padding-top: 70px;
   z-index: 60;
-  transform: translateX(-200px); }
+  -webkit-transform: translateX(-200px);
+          transform: translateX(-200px); }
   .sidebar ul {
     list-style: none;
     padding-left: 0; }
@@ -105,6 +112,7 @@ a {
     position: relative;
     padding-top: 10px;
     padding-bottom: 10px;
+    -webkit-transition: background-color 0.3s ease;
     transition: background-color 0.3s ease;
     margin-bottom: 10px;
     overflow: hidden; }
@@ -122,16 +130,22 @@ a {
         margin-right: 5px; }
 
 .sidebar.active {
-  transition: transform 0.3s ease; }
+  -webkit-transition: -webkit-transform 0.3s ease;
+  transition: -webkit-transform 0.3s ease;
+  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, -webkit-transform 0.3s ease; }
   @media (min-width: 1024px) and (max-width: 1439px) {
     .sidebar.active {
-      transform: translateX(0px); } }
+      -webkit-transform: translateX(0px);
+              transform: translateX(0px); } }
 
 .side-nav.active {
   background-color: #3b5998;
+  -webkit-transition: background-color 0.3s ease 0.4s;
   transition: background-color 0.3s ease 0.4s; }
   .side-nav.active .side-button {
     color: white;
+    -webkit-transition: color 0.3s ease 0.2s;
     transition: color 0.3s ease 0.2s; }
   .side-nav.active:hover {
     background-color: #3b5998; }
@@ -144,15 +158,23 @@ a {
   left: 0;
   z-index: 65; }
   .ripple span {
-    transform: scale(0);
+    -webkit-transform: scale(0);
+            transform: scale(0);
     border-radius: 100%;
     position: absolute;
     background-color: #3b5998;
-    animation: ripple 850ms; }
+    -webkit-animation: ripple 850ms;
+            animation: ripple 850ms; }
+
+@-webkit-keyframes ripple {
+  to {
+    -webkit-transform: scale(2);
+            transform: scale(2); } }
 
 @keyframes ripple {
   to {
-    transform: scale(2); } }
+    -webkit-transform: scale(2);
+            transform: scale(2); } }
 
 #map-feature path[occupy="0"] {
   fill: #eff2fa; }
@@ -255,8 +277,7 @@ a {
 .axis--y text {
   font: 5px Georgia, serif; }
 
-.axis path,
-.axis line {
+.axis path, .axis line {
   fill: none;
   stroke: #000;
   shape-rendering: crispEdges; }
@@ -331,6 +352,7 @@ a {
       height: 40px;
       position: relative;
       display: inline-block;
+      -webkit-transition: all 0.3s ease-out;
       transition: all 0.3s ease-out;
       color: #3b5998;
       text-decoration: none;
@@ -413,6 +435,7 @@ a {
   margin-bottom: 10px;
   margin-left: auto;
   margin-right: auto;
+  -webkit-transition: all 0.2s ease;
   transition: all 0.2s ease; }
   .file-icon i {
     line-height: 100px;
@@ -433,11 +456,13 @@ a {
   background-color: #3b5998;
   color: white;
   border-radius: 3px;
+  -webkit-transition: all 0.2s ease;
   transition: all 0.2s ease; }
   #entry-file + label:hover {
     background-color: #1b395e;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-    transform: translate(0, 0); }
+    -webkit-transform: translate(0, 0);
+            transform: translate(0, 0); }
   #entry-file + label.invalid {
     background-color: #ced1d8; }
 
@@ -471,31 +496,56 @@ a {
   .content-box:hover {
     box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22); }
   .content-box:first-child {
-    transform: rotate(-15deg);
+    -webkit-transform: rotate(-15deg);
+            transform: rotate(-15deg);
     height: auto;
-    transform-origin: top right;
+    -webkit-transform-origin: top right;
+            transform-origin: top right;
     top: 100vh; }
   .content-box:nth-child(2) {
-    transform: rotate(15deg);
+    -webkit-transform: rotate(15deg);
+            transform: rotate(15deg);
     height: auto;
-    transform-origin: top left;
+    -webkit-transform-origin: top left;
+            transform-origin: top left;
     top: 100vh; }
   .content-box:nth-child(3) {
-    transform: rotate(-15deg);
+    -webkit-transform: rotate(-15deg);
+            transform: rotate(-15deg);
     height: 300px;
-    transform-origin: top right;
+    -webkit-transform-origin: top right;
+            transform-origin: top right;
     top: 100vh;
     text-align: center; }
     .content-box:nth-child(3) h2 {
       font-weight: 700;
-      transform: translateY(100px); }
+      -webkit-transform: translateY(100px);
+              transform: translateY(100px); }
+
+@-webkit-keyframes shake {
+  10%, 90% {
+    -webkit-transform: translate(-2px, 0);
+            transform: translate(-2px, 0); }
+  20%, 80% {
+    -webkit-transform: translate(4px, 0);
+            transform: translate(4px, 0); }
+  30%, 50%, 70% {
+    -webkit-transform: translate(-7px, 0);
+            transform: translate(-7px, 0); }
+  40%, 60% {
+    -webkit-transform: translate(7px, 0);
+            transform: translate(7px, 0); } }
 
 @keyframes shake {
   10%, 90% {
-    transform: translate(-2px, 0); }
+    -webkit-transform: translate(-2px, 0);
+            transform: translate(-2px, 0); }
   20%, 80% {
-    transform: translate(4px, 0); }
+    -webkit-transform: translate(4px, 0);
+            transform: translate(4px, 0); }
   30%, 50%, 70% {
-    transform: translate(-7px, 0); }
+    -webkit-transform: translate(-7px, 0);
+            transform: translate(-7px, 0); }
   40%, 60% {
-    transform: translate(7px, 0); } }
+    -webkit-transform: translate(7px, 0);
+            transform: translate(7px, 0); } }

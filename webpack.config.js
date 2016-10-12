@@ -1,10 +1,8 @@
-var autoprefixer = require("autoprefixer");
 var path = require("path");
-var precss = require("precss");
 var webpack = require("webpack");
 var sassLoaders = [
     "style-loader",
-    "css-loader",
+    "css-loader?importLoaders=1",
     "postcss-loader",
     "sass-loader?includePaths[]=" + path.join(__dirname, "app", "sass")
 ];
@@ -38,8 +36,12 @@ module.exports = {
             Papa: path.join(__dirname, "./src/javascript/papaparse.min.js")
         })
     ],
-
-    postcss: [ autoprefixer({ browsers: ["last 2 versions"] }) ],
+    postcss: function() {
+        return [
+            require("precss"),
+            require("autoprefixer")
+        ];
+    },
     resolve: {
         extensions: ["", ".js", ".scss", ".sass"],
         root: [path.join(__dirname, "./src")]

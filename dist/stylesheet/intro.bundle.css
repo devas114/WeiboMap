@@ -46,6 +46,7 @@ a {
       font-height: 1.2rem;
       clear: none;
       display: inline-block;
+      -webkit-transition: all 0.3s ease;
       transition: all 0.3s ease; }
       #nav ul li:hover {
         background-color: #9fb1ca; }
@@ -127,6 +128,7 @@ a {
       height: 40px;
       position: relative;
       display: inline-block;
+      -webkit-transition: all 0.3s ease-out;
       transition: all 0.3s ease-out;
       color: #3b5998;
       text-decoration: none;
