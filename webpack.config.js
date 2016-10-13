@@ -10,7 +10,8 @@ var sassLoaders = [
 module.exports = {
     entry: {
         main: ["./src/javascript/index.js"],
-        intro: ["./src/javascript/instruction.js"]
+        intro: ["./src/javascript/instruction.js"],
+        cred: ["./src/javascript/credential.js"]
     },
     output: {
         path: path.join(__dirname, "./dist"),

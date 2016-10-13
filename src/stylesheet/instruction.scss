@@ -27,6 +27,10 @@ body {
         width: 60%;
     }
 
+    @include mobile {
+        padding: 20px 10px;
+    }
+
     p {
         margin-top: 30px;
         margin-bottom: 30px;

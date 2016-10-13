@@ -193,47 +193,55 @@ a {
         line-height: 40px;
         font-size: 20px; }
 
-body {
-  background-color: #f2f2f2; }
-
 .main {
-  width: 80%;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 80px;
-  margin-bottom: 40px;
-  padding: 20px 60px;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-  background-color: white;
-  color: #272727; }
-  @media (min-width: 1024px) and (max-width: 1439px) {
-    .main {
-      width: 60%; } }
-  @media (min-width: 1440px) {
-    .main {
-      width: 60%; } }
+  width: 100%;
+  min-height: calc(100vh - 72px);
+  background-color: #f2f2f2;
+  padding-top: 15vh;
+  color: #272727;
+  padding-bottom: 5vh; }
+  .main .content {
+    width: 80%;
+    height: auto;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    padding: 30px 60px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: white; }
+    @media (min-width: 1024px) and (max-width: 1439px) {
+      .main .content {
+        width: 60%; } }
+    @media (min-width: 1440px) {
+      .main .content {
+        width: 60%; } }
+    @media (max-width: 579px) {
+      .main .content {
+        padding: 20px 15px; } }
+    .main .content h1 {
+      font-size: 2rem;
+      margin-top: 25px;
+      margin-bottom: 25px; }
+    .main .content p {
+      margin-top: 20px;
+      margin-bottom: 20px;
+      line-height: 1.8;
+      font-size: 1.2rem; }
+
+#content-list {
+  list-style-type: disc;
+  margin-left: 40px;
+  margin-top: 50px; }
   @media (max-width: 579px) {
-    .main {
-      padding: 20px 10px; } }
-  .main p {
-    margin-top: 30px;
-    margin-bottom: 30px;
+    #content-list {
+      margin-left: 20px; } }
+  #content-list li p {
     font-size: 16px;
-    line-height: 2rem; }
-  .main h1 {
-    font-size: 2.5rem;
-    font-weight: 700;
-    margin-top: 30px;
-    margin-bottom: 30px; }
-  .main h3 {
-    font-size: 1.5rem; }
-  .main a {
-    font-weight: 700; }
-    .main a:hover {
-      text-decoration: underline; }
-  .main strong {
-    font-weight: 700; }
-  .main section {
+    margin-top: 10px;
     margin-bottom: 10px; }
-    .main section:last-child {
-      margin-bottom: 0; }
+  #content-list li a {
+    font-weight: 700;
+    cursor: pointer; }
+    #content-list li a:hover {
+      text-decoration: underline; }
+  #content-list li strong {
+    font-weight: 700; }

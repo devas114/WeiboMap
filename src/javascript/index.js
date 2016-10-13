@@ -2,6 +2,7 @@
 require("../stylesheet/index.scss");
 require("./file_input.js");
 require("./sidebar.js");
+require("./nav.js");
 
 var animation = require("./animation.js");
 
