@@ -32,17 +32,14 @@ a {
   top: 0;
   position: fixed;
   z-index: 100;
-  -webkit-transition: -webkit-transform 0.3s ease;
-  transition: -webkit-transform 0.3s ease;
-  transition: transform 0.3s ease;
-  transition: transform 0.3s ease, -webkit-transform 0.3s ease; }
+  -webkit-transition: height 0.3s ease;
+  transition: height 0.3s ease; }
   @media (max-width: 579px) {
     #nav {
-      height: 100vh;
+      height: 50px;
       text-align: center;
       background-color: #3b5998;
-      -webkit-transform: translateY(-100vh);
-              transform: translateY(-100vh); } }
+      overflow: hidden; } }
   #nav ul {
     text-align: center;
     height: auto;
@@ -85,14 +82,14 @@ a {
   position: fixed;
   left: 0;
   top: 0;
-  width: 100px;
-  height: 100px;
+  width: 50px;
+  height: 50px;
   text-align: center;
   border-radius: 5px;
   z-index: 1000; }
   .nav-mobile .fa {
-    font-size: 80px;
-    line-height: 100px;
+    font-size: 40px;
+    line-height: 50px;
     color: white; }
 
 .mobile-open {
@@ -105,8 +102,7 @@ a {
 
 @media (max-width: 579px) {
   #nav.active {
-    -webkit-transform: none;
-            transform: none; } }
+    height: 100vh; } }
 
 .footer {
   width: 100%;
@@ -200,6 +196,9 @@ a {
   padding-top: 15vh;
   color: #272727;
   padding-bottom: 5vh; }
+  @media (max-width: 579px) {
+    .main {
+      padding-top: 10vh; } }
   .main .content {
     width: 80%;
     height: auto;
@@ -216,11 +215,15 @@ a {
         width: 60%; } }
     @media (max-width: 579px) {
       .main .content {
-        padding: 20px 15px; } }
+        width: 90%;
+        padding: 20px 20px; } }
     .main .content h1 {
       font-size: 2rem;
       margin-top: 25px;
       margin-bottom: 25px; }
+      @media (max-width: 579px) {
+        .main .content h1 {
+          margin-top: 10px; } }
     .main .content p {
       margin-top: 20px;
       margin-bottom: 20px;
