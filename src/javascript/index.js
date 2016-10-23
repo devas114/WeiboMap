@@ -50,10 +50,7 @@ var myMap;
 
 var rawData,
     china_cities;
-/*
-var proj = d3.geo.mercator().center([105, 38]).scale(750).translate([width / 2, height / 2]);
-var path = d3.geo.path().projection(proj);
-*/
+
 d3.json("dist/data/cities.json", function(error, json) {
     if (error) {
         return console.log(error);
@@ -155,7 +152,7 @@ function prepareData(rawData) {
             weiboData.provNest[node.prov] = {key: node.prov, values: 1};
         }
 
-        // parse parent-children relationship
+        //parse parent-children relationship
         var parent = weiboData.dataDict[ node.parent ];
         if (parent) {
             (parent.children || (parent.children = [])).push(node);

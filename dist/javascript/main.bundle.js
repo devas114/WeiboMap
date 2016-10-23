@@ -10360,10 +10360,7 @@
 
 	var rawData,
 	    china_cities;
-	/*
-	var proj = d3.geo.mercator().center([105, 38]).scale(750).translate([width / 2, height / 2]);
-	var path = d3.geo.path().projection(proj);
-	*/
+
 	d3.json("dist/data/cities.json", function(error, json) {
 	    if (error) {
 	        return console.log(error);
@@ -10465,7 +10462,7 @@
 	            weiboData.provNest[node.prov] = {key: node.prov, values: 1};
 	        }
 
-	        // parse parent-children relationship
+	        //parse parent-children relationship
 	        var parent = weiboData.dataDict[ node.parent ];
 	        if (parent) {
 	            (parent.children || (parent.children = [])).push(node);
@@ -11064,24 +11061,23 @@
 /* 16 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(jQuery) {"use strict";
-	( function ($) {
-	    var input = $("#entry-file"),
-	        label = input.next("label"),
-	        labelVal = label.html();
+	/* WEBPACK VAR INJECTION */(function($) {"use strict";
 
-	    input.on("change", function (e) {
-	        var fileName = "";
-	        if (e.target.value) {
-	            fileName = e.target.value.split("\\").pop();
-	        }
-	        if (fileName) {
-	            label.find("span").html(fileName);
-	        } else {
-	            label.html(labelVal);
-	        }
-	    })
-	})( jQuery )
+	var input = $("#entry-file"),
+	    label = input.next("label"),
+	    labelVal = label.html();
+
+	input.on("change", function (e) {
+	    var fileName = "";
+	    if (e.target.value) {
+	        fileName = e.target.value.split("\\").pop();
+	    }
+	    if (fileName) {
+	        label.find("span").html(fileName);
+	    } else {
+	        label.html(labelVal);
+	    }
+	});
 
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7)))
 
